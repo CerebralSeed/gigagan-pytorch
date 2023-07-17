@@ -1573,6 +1573,10 @@ class GigaGAN(nn.Module):
             self.print(f'unable to load optimizers {e.msg}- optimizer states will be reset')
             pass
 
+        # clean up
+        del pkg
+        torch.cuda.empty_cache()
+
     @property
     def device(self):
         return self.steps.device
